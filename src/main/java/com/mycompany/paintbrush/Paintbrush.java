@@ -17,7 +17,7 @@ public class Paintbrush extends JFrame {
     
     public static void main(String[] args) {
         System.out.println("Hello World!");
-        Interface i = new Interface();
-        i.setVisible(true);
+        Interface paintbrush = new Interface();
+        paintbrush.setVisible(true);
     }
 }

@@ -11,67 +11,33 @@ import java.awt.Graphics;
  *
  * @author gutei
  */
-public class Circulo {
-        private int xInicial;
-        private int yInicial;
-        private int xFinal;
-        private int yFinal;
-        Graphics g;
-        private Color borda;
-        private Color preenchimento;
+public class Circulo extends D2{
+
         public Circulo(){
-            this.xInicial = 0;
-            this.xFinal = 0;
-            this.yInicial = 0;
-            this.yFinal = 0;
-        }
-        
-        
-    public int getxInicial(){
-        return this.xInicial;
-    }
-    public void setxInicial(int xInicial){
-        this.xInicial = xInicial;
-    }
-    public int getxFinal(){
-        return this.xFinal;
-    }
-    public void setxFinal(int xFinal){
-        this.xFinal = xFinal;
-    }
-    public int getyInicial(){
-        return this.yInicial;
-    }
-    public void setyInicial(int yInicial){
-        this.yInicial = yInicial;
-    }
-    public int getyFinal(){
-        return this.yFinal;
-    }
-    public void setyFinal(int yFinal){
-        this.yFinal = yFinal;
-    }
+            super();
+        }    
 
-    public int largura(int xInicial, int xFinal){
-        return this.xFinal - this.xInicial;
-    }
-
-    public int altura(int yInicial, int yFinal){
-        return this.yFinal - this.yInicial;
-    }
-    
-    
-    public void paint(Graphics g){
-        System.out.println(this.xFinal);        
-        int largura = largura(xInicial, xFinal);
-        int altura = altura(yInicial, yFinal);
-        g.setColor(borda);
-        g.drawOval(this.xInicial,this.yInicial, largura , altura);
+    @Override
+    public void paint(Graphics g,Color c){
+        int largura = largura(super.xInicial, super.xFinal);
+        int altura = altura(super.yInicial, super.yFinal);
+        g.setColor(super.cor);
+        g.drawOval(super.xInicial,super.yInicial, largura,altura);
     }
     
     public void preenche(Graphics g){
-        int largura = largura(xInicial, xFinal);
-        int altura = altura(yInicial, yFinal);
-        g.fillOval(this.xInicial,this.yInicial, largura , altura);
+        int largura = largura(super.xInicial, super.xFinal);
+        int altura = altura(super.yInicial, super.yFinal);
+        g.setColor(super.cor);
+        g.fillOval(super.xInicial+1,super.yInicial+1, largura-1 , altura-1);
+    }
+    
+    public int diametro(int xFinal, int xInicial){
+        return super.xFinal - super.xInicial;
+    }
+    
+    public int raio(int xFinal, int xInicial){
+        int raio = diametro(super.xFinal, super.xInicial)/2;
+        return raio;
     }
 }

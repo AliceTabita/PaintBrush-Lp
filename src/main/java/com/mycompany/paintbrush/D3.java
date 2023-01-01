@@ -4,18 +4,18 @@
  */
 package com.mycompany.paintbrush;
 
-import java.awt.*;
+import java.awt.Graphics;
 
 /**
  *
  * @author gutei
  */
-public abstract class D2 extends Ponto{
+public class D3 extends Ponto{
 
     protected int xFinal;
     protected int yFinal;
     
-    public D2(){
+    public D3(){
         super();
         this.xFinal = 0;
         this.yFinal = 0;
@@ -37,19 +37,6 @@ public abstract class D2 extends Ponto{
         this.yFinal = yFinal;
     }
     
-    public int largura(int xFinal,int xInicial){
-        return this.xFinal - super.xInicial;
-    }
     
-    public int altura(int yFinal, int yInicial){
-        return this.yFinal - super.yInicial;
-    }
     
-    public int area(){
-        int altura = altura(this.yFinal, super.yInicial);
-        int largura = largura(this.xFinal, super.yInicial);
-        return altura * largura;
-    }
-
-    public abstract void paint(Graphics g, Color c);
 }

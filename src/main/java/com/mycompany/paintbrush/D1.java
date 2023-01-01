@@ -4,21 +4,21 @@
  */
 package com.mycompany.paintbrush;
 
-import java.awt.*;
+import java.awt.Graphics;
 
 /**
  *
  * @author gutei
  */
-public abstract class D2 extends Ponto{
-
-    protected int xFinal;
-    protected int yFinal;
+public class D1 extends Ponto {
+    private int xFinal;
+    private int yFinal;
     
-    public D2(){
+    public D1(){
         super();
         this.xFinal = 0;
         this.yFinal = 0;
+        
     }
 
     public int getxFinal() {
@@ -37,19 +37,16 @@ public abstract class D2 extends Ponto{
         this.yFinal = yFinal;
     }
     
-    public int largura(int xFinal,int xInicial){
-        return this.xFinal - super.xInicial;
-    }
-    
-    public int altura(int yFinal, int yInicial){
-        return this.yFinal - super.yInicial;
-    }
-    
-    public int area(){
-        int altura = altura(this.yFinal, super.yInicial);
-        int largura = largura(this.xFinal, super.yInicial);
-        return altura * largura;
-    }
+    @Override
+    public void paint(Graphics graficos){
+        graficos.setColor(super.cor);
+        graficos.drawLine(super.xInicial, super.yInicial, this.xFinal, this.yFinal);
 
-    public abstract void paint(Graphics g, Color c);
+    }
+   
+    public int calculaComprimento(){
+        return (int) Math.sqrt(((this.xFinal - super.xInicial)*(this.xFinal - super.xInicial)) + ((this.yFinal - super.yInicial)*(this.yFinal - super.yInicial)));
+    }
+    
+    
 }

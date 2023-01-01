@@ -5,81 +5,40 @@
 package com.mycompany.paintbrush;
 
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.image.ImageObserver;
-import java.text.AttributedCharacterIterator;
 
 /**
  *
  * @author gutei
  */
-public class Retangulo {
-        private int xInicial;
-        private int yInicial;
-        private int xFinal;
-        private int yFinal;
-        Graphics g;
-        private Color borda;
-        private Color preenchimento;
+public class Retangulo extends D2{
+
         public Retangulo(){
-            this.xInicial = 0;
-            this.xFinal = 0;
-            this.yInicial = 0;
-            this.yFinal = 0;
+            super();
+        }
+        public Retangulo(int xInicial, int yInicial, int xFinal, int yFinal, Color cor){
+            super.xInicial=xInicial;
+            super.yInicial=yInicial;
+            super.xFinal=xFinal;
+            super.yFinal=yFinal;
+            super.cor=cor;
         }
         
-        
-    public int getxInicial(){
-        return this.xInicial;
-    }
-    public void setxInicial(int xInicial){
-        this.xInicial = xInicial;
-    }
-    public int getxFinal(){
-        return this.xFinal;
-    }
-    public void setxFinal(int xFinal){
-        this.xFinal = xFinal;
-    }
-    public int getyInicial(){
-        return this.yInicial;
-    }
-    public void setyInicial(int yInicial){
-        this.yInicial = yInicial;
-    }
-    public int getyFinal(){
-        return this.yFinal;
-    }
-    public void setyFinal(int yFinal){
-        this.yFinal = yFinal;
-    }
+       
 
-    public int largura(int xInicial, int xFinal){
-        return this.xFinal - this.xInicial;
-    }
-
-    public int altura(int yInicial, int yFinal){
-        return this.yFinal - this.yInicial;
-    }
+        @Override
+        public void paint(Graphics g, Color c){
+        int largura = super.largura(super.xInicial, super.xFinal);
+        int altura = super.altura(super.yFinal, super.yInicial);
+        g.setColor(c);
+        g.drawRect(super.xInicial,super.yInicial, largura , altura);
+     }
     
-    
-    public void paint(Graphics g){
-        System.out.println(this.xFinal);        
-        int largura = largura(xInicial, xFinal);
-        int altura = altura(yInicial, yFinal);
-        g.setColor(borda);
-        g.drawRect(this.xInicial,this.yInicial, largura , altura);
-    }
-    
-    public void preenche(Graphics g){
-        int largura = largura(xInicial, xFinal);
-        int altura = altura(yInicial, yFinal);
-        g.fillRect(this.xInicial,this.yInicial, largura , altura);
+    public void preenche(Graphics g,Color c){
+        int largura = super.largura(super.xInicial, super.xFinal);
+        int altura = super.altura(super.yFinal, super.yInicial);
+        g.setColor(c);
+        g.fillRect(super.xInicial+1,super.yInicial+1, largura-1 , altura-1);
     }
     
 }
