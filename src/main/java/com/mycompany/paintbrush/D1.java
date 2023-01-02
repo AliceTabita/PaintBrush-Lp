@@ -4,7 +4,7 @@
  */
 package com.mycompany.paintbrush;
 
-import java.awt.Graphics;
+import java.awt.*;
 
 /**
  *
@@ -38,8 +38,8 @@ public class D1 extends Ponto {
     }
     
     @Override
-    public void paint(Graphics graficos){
-        graficos.setColor(super.cor);
+    public void paint(Graphics graficos, Color c){
+        graficos.setColor(c);
         graficos.drawLine(super.xInicial, super.yInicial, this.xFinal, this.yFinal);
 
     }

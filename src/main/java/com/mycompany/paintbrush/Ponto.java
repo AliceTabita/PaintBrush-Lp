@@ -20,6 +20,10 @@ public class Ponto {
         this.xInicial = 0;
         this.yInicial = 0;                
     }
+    public Ponto(int xInicial,int yInicial){
+        this.xInicial = xInicial;
+        this.yInicial = yInicial;                
+    }
 
     public int getxInicial() {
         return xInicial;
@@ -45,10 +49,10 @@ public class Ponto {
         return cor;
     }
     
-    public void paint(Graphics graficos){
+    public void paint(Graphics graficos, Color c){
         System.out.println(this.xInicial);        
-        graficos.setColor(cor);
-        graficos.drawOval(this.xInicial,this.yInicial,1,1);
+        graficos.setColor(c);
+        graficos.fillOval(this.xInicial,this.yInicial, 3 , 3);
     }
     
     

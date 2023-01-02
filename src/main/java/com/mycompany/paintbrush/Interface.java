@@ -58,7 +58,10 @@ public class Interface extends javax.swing.JFrame {
     public void setyFinal(int yFinal){
         this.yFinal = yFinal;
     }
-        ArrayList<Integer> posicoesX = new ArrayList<Integer>();
+    public int getTipoFigura() {return tipoFigura;}
+    public void setTipoFigura(int tipoFigura) { this.tipoFigura = tipoFigura;}
+
+    ArrayList<Integer> posicoesX = new ArrayList<Integer>();
         ArrayList<Integer> posicoesY = new ArrayList<Integer>();
 
 
@@ -90,12 +93,10 @@ public class Interface extends javax.swing.JFrame {
                 exemplo(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                pegarPosicaoXpressed(evt);
-                pegarPosicaoYpressed(evt);
+                pegarPosicaoPressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                pegarPosicaoXreleased(evt);
-                pegarPosicaoYreleased(evt);
+                pegarPosicaoReleased(evt);
             }
         });
 
@@ -163,6 +164,8 @@ public class Interface extends javax.swing.JFrame {
         desenhaCirculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 desenhaCirculoActionPerformed(evt);
+
+
             }
         });
 
@@ -278,33 +281,24 @@ public class Interface extends javax.swing.JFrame {
 
     }//GEN-LAST:event_exemplo
 
-    private void pegarPosicaoXpressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pegarPosicaoXpressed
-        int X = evt.getX();
-        this.setxInicial(X);
+    private void pegarPosicaoPressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pegarPosicaoXpressed
+        this.xInicial= evt.getX();
+        this.yInicial= evt.getY();
         System.out.println("X inicial " + evt.getX() );
+        System.out.println("Y inicial " + evt.getY() );
         posicoesX.add(this.xInicial);
-        int Y = evt.getY();
-        this.setyInicial(Y);
-        System.out.println("Y inicial: " + Y);      
         posicoesY.add(this.yInicial);
     }//GEN-LAST:event_pegarPosicaoXpressed
 
-    private void pegarPosicaoYpressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pegarPosicaoYpressed
-        
-    }//GEN-LAST:event_pegarPosicaoYpressed
 
-    private void pegarPosicaoXreleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pegarPosicaoXreleased
-        int X = evt.getX();
-        this.setxFinal(X);
-        System.out.println("X final " + X);
+    private void pegarPosicaoReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pegarPosicaoXreleased
+        this.xFinal=evt.getX();
+        System.out.println("X final " + xFinal);
+        this.yFinal= evt.getY();
+        System.out.println("Y final " + yFinal);
         
     }//GEN-LAST:event_pegarPosicaoXreleased
 
-    private void pegarPosicaoYreleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pegarPosicaoYreleased
-        int Y = evt.getY();
-        this.setyFinal(Y);
-        System.out.println("Y final " + Y);
-    }//GEN-LAST:event_pegarPosicaoYreleased
 
     private void selecionaCorBorda(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selecionaCorBorda
         Color cor = colorChooser.getColor();
@@ -326,33 +320,20 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_desenhaCirculoActionPerformed
 
     private void desenhaPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desenhaPontoActionPerformed
-        Ponto p = new Ponto();
-        graficos.setColor(corBorda.getBackground());
-        graficos.drawOval(this.xFinal, this.yFinal, 1, 1);
+        Ponto p = new Ponto(this.xInicial,this.yInicial);
+        p.paint(graficos,corBorda.getBackground());
         
     }//GEN-LAST:event_desenhaPontoActionPerformed
 
     private void CilindroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CilindroActionPerformed
-        Cilindro c = new Cilindro();  
-        c.setxInicial(this.xInicial);
-        c.setxFinal(this.xFinal);
-        c.setyInicial(this.yInicial);
-        c.setyFinal(this.yFinal);
-        c.setCor(corBorda.getBackground());
-        graficos.setColor(c.getCor());
-        c.paint(graficos);
+        Cilindro c = new Cilindro(this.xInicial, this.yInicial,this.xFinal,this.yFinal,corBorda.getBackground());
+        c.paint(graficos,corBorda.getBackground());
 
     }//GEN-LAST:event_CilindroActionPerformed
 
     private void PiramideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PiramideActionPerformed
-        Piramide p = new Piramide();
-        p.setxInicial(this.xInicial);
-        p.setxFinal(this.xFinal);
-        p.setyInicial(this.yInicial);
-        p.setyFinal(this.yFinal);
-        p.setCor(corBorda.getBackground());
-        graficos.setColor(p.getCor());
-        p.paint(graficos);
+        Piramide p = new Piramide(this.xInicial, this.yInicial,this.xFinal,this.yFinal,corBorda.getBackground());
+        p.paint(graficos,corBorda.getBackground());
         
     }//GEN-LAST:event_PiramideActionPerformed
 
