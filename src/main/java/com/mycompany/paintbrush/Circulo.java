@@ -13,23 +13,27 @@ import java.awt.Graphics;
  */
 public class Circulo extends D2{
 
-        public Circulo(){
-            super();
-        }    
+    public Circulo(){
+        super();
+    }
 
+    public Circulo(int xInicial, int yInicial, int xFinal, int yFinal, Color cor){
+        super.xInicial=xInicial;
+        super.yInicial=yInicial;
+        this.xFinal=xFinal;
+        this.yFinal=yFinal;
+        super.cor=cor;
+    }
     @Override
     public void paint(Graphics g,Color c){
-        int largura = largura(super.xInicial, super.xFinal);
-        int altura = altura(super.yInicial, super.yFinal);
-        g.setColor(super.cor);
-        g.drawOval(super.xInicial,super.yInicial, largura,altura);
+        g.setColor(c);
+        System.out.println(super.largura());
+        g.drawOval(super.xInicial,super.yInicial, super.largura(),super.altura());
     }
     
-    public void preenche(Graphics g){
-        int largura = largura(super.xInicial, super.xFinal);
-        int altura = altura(super.yInicial, super.yFinal);
-        g.setColor(super.cor);
-        g.fillOval(super.xInicial+1,super.yInicial+1, largura-1 , altura-1);
+    public void preenche(Graphics g,Color c){
+        g.setColor(c);
+        g.fillOval(super.xInicial+1,super.yInicial+1, super.largura()-1 , super.altura()-1);
     }
     
     public int diametro(int xFinal, int xInicial){

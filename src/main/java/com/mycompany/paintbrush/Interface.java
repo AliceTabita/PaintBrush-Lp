@@ -5,18 +5,9 @@
 package com.mycompany.paintbrush;
 
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Polygon;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.image.ImageObserver;
-import java.text.AttributedCharacterIterator;
 import java.util.ArrayList;
-import javax.swing.JColorChooser;
 
 /**
  *
@@ -290,15 +281,16 @@ public class Interface extends javax.swing.JFrame {
     private void pegarPosicaoXpressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pegarPosicaoXpressed
         int X = evt.getX();
         this.setxInicial(X);
-        System.out.println("X inicial " + evt.getX() +" " +evt.getY());
+        System.out.println("X inicial " + evt.getX() );
         posicoesX.add(this.xInicial);
-    }//GEN-LAST:event_pegarPosicaoXpressed
-
-    private void pegarPosicaoYpressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pegarPosicaoYpressed
         int Y = evt.getY();
         this.setyInicial(Y);
         System.out.println("Y inicial: " + Y);      
         posicoesY.add(this.yInicial);
+    }//GEN-LAST:event_pegarPosicaoXpressed
+
+    private void pegarPosicaoYpressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pegarPosicaoYpressed
+        
     }//GEN-LAST:event_pegarPosicaoYpressed
 
     private void pegarPosicaoXreleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pegarPosicaoXreleased
@@ -327,17 +319,9 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_selecionaCorPreenchimento
 
     private void desenhaCirculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desenhaCirculoActionPerformed
-        Circulo c = new Circulo();
-        c.setxInicial(this.xInicial);
-        c.setyInicial(this.yInicial);
-        c.setxFinal(this.xFinal);
-        c.setyFinal(this.yFinal);
-        c.setCor(corBorda.getBackground());
-        graficos.setColor(c.getCor());
-        c.paint(graficos);
-        c.setCor(corPreenchimento.getBackground());
-        graficos.setColor(c.getCor());
-        c.preenche(graficos);
+        Circulo c = new Circulo(xInicial,yInicial,xFinal,yFinal,corPreenchimento.getBackground());
+        c.paint(graficos,corBorda.getBackground());
+        c.preenche(graficos,corPreenchimento.getBackground());
 
     }//GEN-LAST:event_desenhaCirculoActionPerformed
 

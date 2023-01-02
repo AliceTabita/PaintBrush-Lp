@@ -21,34 +21,31 @@ public abstract class D2 extends Ponto{
         this.yFinal = 0;
     }
 
-    public int getxFinal() {
+    public int getXFinal() {
         return xFinal;
     }
 
-    public void setxFinal(int xFinal) {
+    public void setXFinal(int xFinal) {
         this.xFinal = xFinal;
     }
 
-    public int getyFinal() {
+    public int getYFinal() {
         return yFinal;
     }
 
-    public void setyFinal(int yFinal) {
+    public void setYFinal(int yFinal) {
         this.yFinal = yFinal;
     }
-    
-    public int largura(int xFinal,int xInicial){
-        return this.xFinal - super.xInicial;
+
+    public int altura(){
+        return this.yFinal-super.yInicial;
     }
-    
-    public int altura(int yFinal, int yInicial){
-        return this.yFinal - super.yInicial;
+    public int largura(){
+        return this.xFinal-super.xInicial;
     }
-    
+
     public int area(){
-        int altura = altura(this.yFinal, super.yInicial);
-        int largura = largura(this.xFinal, super.yInicial);
-        return altura * largura;
+        return altura() * largura();
     }
 
     public abstract void paint(Graphics g, Color c);
