@@ -23,7 +23,7 @@ public class Spray extends Ponto{
         for(int i=0;i<100;i++){
             int valX= aleatorio.nextInt((maxX-minX))+minX;
             int valY= aleatorio.nextInt((maxY-minY))+minY;
-            graficos.fillOval(valX,valY, 3 , 3);
+            graficos.fillOval(valX,valY, 1 , 1);
         }
         System.out.println(this.xInicial);
 

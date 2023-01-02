@@ -21,6 +21,7 @@ public class Interface extends javax.swing.JFrame {
         private int yInicial;
         private int xFinal;
         private int yFinal;
+        private boolean sprayAtivo;
         private String figura;
     public Interface(){
         initComponents();
@@ -30,7 +31,8 @@ public class Interface extends javax.swing.JFrame {
         this.yInicial = 0;
         this.yFinal = 0;
         this.figura = " ";
-        tipoFigura=1;
+        this.sprayAtivo=false;
+        this.tipoFigura=1;
         }
         
         
@@ -87,8 +89,9 @@ public class Interface extends javax.swing.JFrame {
                 cl.paint(graficos,corBorda.getBackground());
             }
             case 6 ->{
-                Spray s = new Spray(this.xInicial,this.yInicial);
-                s.paint(graficos, corBorda.getBackground());
+                    Spray s = new Spray(this.xInicial, this.yInicial);
+                    s.paint(graficos, corBorda.getBackground());
+
             }
         }
     }
@@ -116,6 +119,11 @@ public class Interface extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         areaDesenhos.setBackground(new java.awt.Color(255, 255, 255));
+        areaDesenhos.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                areaDesenhosMouseDragged(evt);
+            }
+        });
         areaDesenhos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 exemplo(evt);
@@ -234,9 +242,7 @@ public class Interface extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(areaDesenhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(areaDesenhos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,17 +323,17 @@ public class Interface extends javax.swing.JFrame {
     private void pegarPosicaoPressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pegarPosicaoXpressed
         this.xInicial= evt.getX();
         this.yInicial= evt.getY();
-        System.out.println("X inicial " + evt.getX() );
-        System.out.println("Y inicial " + evt.getY() );
+        System.out.println("X inicial interface " + evt.getX()  );
+        System.out.println("Y inicial interface " + evt.getY() );
         posicoesX.add(this.xInicial);
         posicoesY.add(this.yInicial);
     }//GEN-LAST:event_pegarPosicaoXpressed
 
     private void pegarPosicaoReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pegarPosicaoXreleased
         this.xFinal=evt.getX();
-        System.out.println("X final " + xFinal);
+        System.out.println("X final interface" + xFinal);
         this.yFinal= evt.getY();
-        System.out.println("Y final " + yFinal);
+        System.out.println("Y final interface" + yFinal);
         this.executaDesenho();
         this.xInicial=0;
         this.xFinal=0;
@@ -391,6 +397,19 @@ public class Interface extends javax.swing.JFrame {
     private void SprayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SprayActionPerformed
         this.tipoFigura=6;
     }//GEN-LAST:event_SprayActionPerformed
+
+    private void areaDesenhosMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_areaDesenhosMouseDragged
+        if (this.tipoFigura==6){
+            this.xInicial=evt.getX();
+            this.yInicial=evt.getY();
+            this.executaDesenho();
+        }else if(this.tipoFigura == 2){
+            this.xInicial=evt.getX();
+            this.yInicial=evt.getY();
+            this.executaDesenho();
+        }
+        
+    }//GEN-LAST:event_areaDesenhosMouseDragged
 
     /**
      * @param args the command line arguments

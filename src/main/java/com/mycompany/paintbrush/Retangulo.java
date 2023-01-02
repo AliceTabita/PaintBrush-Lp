@@ -27,7 +27,10 @@ public class Retangulo extends D2{
 
         @Override
         public void paint(Graphics g, Color c){
-
+            System.out.println("x ini classe"+super.xInicial);
+            System.out.println("y ini classe"+super.yInicial);
+            System.out.println("altura classe"+super.altura());
+            System.out.println("largura classe"+super.largura());
             g.setColor(c);
             g.drawRect(super.xInicial,super.yInicial, super.largura() , super.altura());
         }
