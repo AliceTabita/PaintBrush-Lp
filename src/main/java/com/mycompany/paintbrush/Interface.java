@@ -58,13 +58,40 @@ public class Interface extends javax.swing.JFrame {
     public void setyFinal(int yFinal){
         this.yFinal = yFinal;
     }
-    public int getTipoFigura() {return tipoFigura;}
-    public void setTipoFigura(int tipoFigura) { this.tipoFigura = tipoFigura;}
 
     ArrayList<Integer> posicoesX = new ArrayList<Integer>();
         ArrayList<Integer> posicoesY = new ArrayList<Integer>();
 
-
+    public void executaDesenho(){
+        switch(this.tipoFigura){
+            case 1 -> {
+                Retangulo r = new Retangulo(this.xInicial,this.yInicial,this.xFinal,this.yFinal,corPreenchimento.getBackground());
+                r.paint(graficos,corBorda.getBackground());
+                r.preenche(graficos, corPreenchimento.getBackground());
+            }
+            case 2 -> {
+                Ponto p = new Ponto(this.xInicial,this.yInicial);
+                p.paint(graficos,corBorda.getBackground());
+            }
+            case 3 -> {
+                Piramide pi = new Piramide(this.xInicial, this.yInicial,this.xFinal,this.yFinal,corBorda.getBackground());
+                pi.paint(graficos,corBorda.getBackground());
+            }
+            case 4 -> {
+                Circulo c = new Circulo(xInicial,yInicial,xFinal,yFinal,corPreenchimento.getBackground());
+                c.paint(graficos,corBorda.getBackground());
+                c.preenche(graficos,corPreenchimento.getBackground());
+            }
+            case 5 -> {
+                Cilindro cl = new Cilindro(this.xInicial, this.yInicial,this.xFinal,this.yFinal,corBorda.getBackground());
+                cl.paint(graficos,corBorda.getBackground());
+            }
+            case 6 ->{
+                Spray s = new Spray(this.xInicial,this.yInicial);
+                s.paint(graficos, corBorda.getBackground());
+            }
+        }
+    }
     
     
     
@@ -84,6 +111,7 @@ public class Interface extends javax.swing.JFrame {
         Cilindro = new javax.swing.JButton();
         Piramide = new javax.swing.JButton();
         desenharPoligonos = new javax.swing.JButton();
+        Spray = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -164,8 +192,6 @@ public class Interface extends javax.swing.JFrame {
         desenhaCirculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 desenhaCirculoActionPerformed(evt);
-
-
             }
         });
 
@@ -194,6 +220,13 @@ public class Interface extends javax.swing.JFrame {
         desenharPoligonos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 desenharPoligonosActionPerformed(evt);
+            }
+        });
+
+        Spray.setText("Spray");
+        Spray.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SprayActionPerformed(evt);
             }
         });
 
@@ -227,7 +260,8 @@ public class Interface extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(desenhaCirculo)
                                     .addComponent(Cilindro)
-                                    .addComponent(desenharPoligonos))))
+                                    .addComponent(desenharPoligonos)
+                                    .addComponent(Spray))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(colorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -257,6 +291,8 @@ public class Interface extends javax.swing.JFrame {
                             .addComponent(Piramide)
                             .addComponent(desenharPoligonos))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Spray)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
@@ -271,10 +307,7 @@ public class Interface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void desenhaRetanguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desenhaRetanguloActionPerformed
-       Retangulo r = new Retangulo(this.xInicial,this.yInicial,this.xFinal,this.yFinal,corPreenchimento.getBackground());
-       r.paint(graficos,corBorda.getBackground());
-       r.preenche(graficos, corPreenchimento.getBackground());
-       System.out.println("Área: " + r.area());
+        this.tipoFigura=1;
     }//GEN-LAST:event_desenhaRetanguloActionPerformed
 
     private void exemplo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exemplo
@@ -290,13 +323,16 @@ public class Interface extends javax.swing.JFrame {
         posicoesY.add(this.yInicial);
     }//GEN-LAST:event_pegarPosicaoXpressed
 
-
     private void pegarPosicaoReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pegarPosicaoXreleased
         this.xFinal=evt.getX();
         System.out.println("X final " + xFinal);
         this.yFinal= evt.getY();
         System.out.println("Y final " + yFinal);
-        
+        this.executaDesenho();
+        this.xInicial=0;
+        this.xFinal=0;
+        this.yInicial=0;
+        this.yFinal=0;
     }//GEN-LAST:event_pegarPosicaoXreleased
 
 
@@ -313,27 +349,21 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_selecionaCorPreenchimento
 
     private void desenhaCirculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desenhaCirculoActionPerformed
-        Circulo c = new Circulo(xInicial,yInicial,xFinal,yFinal,corPreenchimento.getBackground());
-        c.paint(graficos,corBorda.getBackground());
-        c.preenche(graficos,corPreenchimento.getBackground());
+        this.tipoFigura=4;
 
     }//GEN-LAST:event_desenhaCirculoActionPerformed
 
     private void desenhaPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desenhaPontoActionPerformed
-        Ponto p = new Ponto(this.xInicial,this.yInicial);
-        p.paint(graficos,corBorda.getBackground());
-        
+        this.tipoFigura=2;
     }//GEN-LAST:event_desenhaPontoActionPerformed
 
     private void CilindroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CilindroActionPerformed
-        Cilindro c = new Cilindro(this.xInicial, this.yInicial,this.xFinal,this.yFinal,corBorda.getBackground());
-        c.paint(graficos,corBorda.getBackground());
+        this.tipoFigura=5;
 
     }//GEN-LAST:event_CilindroActionPerformed
 
     private void PiramideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PiramideActionPerformed
-        Piramide p = new Piramide(this.xInicial, this.yInicial,this.xFinal,this.yFinal,corBorda.getBackground());
-        p.paint(graficos,corBorda.getBackground());
+        this.tipoFigura=3;
         
     }//GEN-LAST:event_PiramideActionPerformed
 
@@ -357,6 +387,10 @@ public class Interface extends javax.swing.JFrame {
         posicoesY.clear();
 
     }//GEN-LAST:event_desenharPoligonosActionPerformed
+
+    private void SprayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SprayActionPerformed
+        this.tipoFigura=6;
+    }//GEN-LAST:event_SprayActionPerformed
 
     /**
      * @param args the command line arguments
@@ -396,6 +430,7 @@ public class Interface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cilindro;
     private javax.swing.JButton Piramide;
+    private javax.swing.JButton Spray;
     private javax.swing.JPanel areaDesenhos;
     private javax.swing.JColorChooser colorChooser;
     private javax.swing.JPanel corBorda;

@@ -33,7 +33,7 @@ public class Circulo extends D2{
     
     public void preenche(Graphics g,Color c){
         g.setColor(c);
-        g.fillOval(super.xInicial+1,super.yInicial+1, super.largura()-1 , super.altura()-1);
+        g.fillOval(super.xInicial,super.yInicial, super.largura()-1 , super.altura()-1);
     }
     
     public int diametro(int xFinal, int xInicial){
