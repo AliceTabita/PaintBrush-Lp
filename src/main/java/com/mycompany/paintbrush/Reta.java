@@ -1,4 +1,5 @@
 package com.mycompany.paintbrush;
 
-public class Reta{
+public class Reta extends D1{
+
 }
