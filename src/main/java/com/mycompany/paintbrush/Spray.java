@@ -20,10 +20,16 @@ public class Spray extends Ponto{
         int maxY=super.yInicial+50;
         int minY=super.yInicial-50;
         graficos.setColor(c);
-        for(int i=0;i<100;i++){
+        for(int i=0;i<200;i++){
+
             int valX= aleatorio.nextInt((maxX-minX))+minX;
             int valY= aleatorio.nextInt((maxY-minY))+minY;
-            graficos.fillOval(valX,valY, 1 , 1);
+            double distancia = Math.sqrt(Math.pow(xInicial - valX,2) + Math.pow(yInicial - valY,2));
+
+            if(distancia <= 50) {
+
+                graficos.fillOval(valX, valY, aleatorio.nextInt(3), aleatorio.nextInt(3));
+            }
         }
         System.out.println(this.xInicial);
 

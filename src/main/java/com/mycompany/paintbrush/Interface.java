@@ -102,6 +102,12 @@ public class Interface extends javax.swing.JFrame {
                 this.posicoesX.clear();
                 this.posicoesY.clear();
             }
+            case 7 -> {
+                Borracha r = new Borracha(this.xInicial, this.yInicial, this.xFinal, this.yFinal, Color.WHITE);
+                r.preenche(graficos);
+                this.posicoesX.clear();
+                this.posicoesY.clear();
+            }
         }
     }
     
@@ -124,6 +130,7 @@ public class Interface extends javax.swing.JFrame {
         Piramide = new javax.swing.JButton();
         desenharPoligonos = new javax.swing.JButton();
         Spray = new javax.swing.JButton();
+        Borracha = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -247,6 +254,13 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        Borracha.setText("Borracha");
+        Borracha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BorrachaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -270,13 +284,14 @@ public class Interface extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(Piramide, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(desenhaPonto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(desenhaRetangulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(desenhaRetangulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Borracha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(desenhaCirculo)
-                                    .addComponent(Cilindro)
-                                    .addComponent(desenharPoligonos)
-                                    .addComponent(Spray))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(desenharPoligonos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Spray, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Cilindro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(desenhaCirculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(colorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -306,7 +321,9 @@ public class Interface extends javax.swing.JFrame {
                             .addComponent(Piramide)
                             .addComponent(desenharPoligonos))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Spray)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Spray)
+                            .addComponent(Borracha))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -408,17 +425,17 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_SprayActionPerformed
 
     private void areaDesenhosMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_areaDesenhosMouseDragged
-        if (this.tipoFigura==6){
-            this.xInicial=evt.getX();
-            this.yInicial=evt.getY();
-            this.executaDesenho();
-        }else if(this.tipoFigura == 2){
+        if (this.tipoFigura==6|| this.tipoFigura==7||this.tipoFigura==2){
             this.xInicial=evt.getX();
             this.yInicial=evt.getY();
             this.executaDesenho();
         }
         
     }//GEN-LAST:event_areaDesenhosMouseDragged
+
+    private void BorrachaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrachaActionPerformed
+        this.tipoFigura=7;
+    }//GEN-LAST:event_BorrachaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -456,6 +473,7 @@ public class Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Borracha;
     private javax.swing.JButton Cilindro;
     private javax.swing.JButton Piramide;
     private javax.swing.JButton Spray;

@@ -45,13 +45,14 @@
                                   <Component id="Piramide" alignment="0" max="32767" attributes="0"/>
                                   <Component id="desenhaPonto" alignment="0" max="32767" attributes="0"/>
                                   <Component id="desenhaRetangulo" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="Borracha" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="desenhaCirculo" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Cilindro" min="-2" max="-2" attributes="0"/>
-                                  <Component id="desenharPoligonos" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Spray" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="desenharPoligonos" max="32767" attributes="0"/>
+                                  <Component id="Spray" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="Cilindro" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="desenhaCirculo" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -92,7 +93,10 @@
                           <Component id="desenharPoligonos" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="Spray" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Spray" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Borracha" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -254,6 +258,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SprayActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Borracha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Borracha"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BorrachaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
