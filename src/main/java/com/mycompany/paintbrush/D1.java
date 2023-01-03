@@ -20,6 +20,13 @@ public class D1 extends Ponto {
         this.yFinal = 0;
         
     }
+    public D1(int xInicial, int yInicial, int xFinal, int yFinal, Color cor){
+        super.xInicial=xInicial;
+        super.yInicial=yInicial;
+        this.xFinal=xFinal;
+        this.yFinal=yFinal;
+        super.cor=cor;
+    }
 
     public int getxFinal() {
         return xFinal;

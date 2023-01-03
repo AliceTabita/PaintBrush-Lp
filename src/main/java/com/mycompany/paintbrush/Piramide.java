@@ -33,5 +33,10 @@ public class Piramide extends D2 {
         graficos.drawLine(super.xInicial, super.yFinal, super.xInicial+largura/2, super.yInicial-altura);
         graficos.drawLine(super.xInicial+largura , super.yFinal, super.xInicial+largura/2, super.yInicial-altura);
         graficos.drawRect(super.xInicial, super.yInicial, largura, altura);
+        volume();
+    }
+    public void volume(){
+        int areaB=super.altura()*super.largura();
+        System.out.println("Volume da piramide: "+((areaB*altura())/3) +" m3");
     }
 }

@@ -70,6 +70,8 @@ public class Interface extends javax.swing.JFrame {
                 Retangulo r = new Retangulo(this.xInicial,this.yInicial,this.xFinal,this.yFinal,corPreenchimento.getBackground());
                 r.paint(graficos,corBorda.getBackground());
                 r.preenche(graficos, corPreenchimento.getBackground());
+                this.posicoesX.clear();
+                this.posicoesY.clear();
             }
             case 2 -> {
                 Ponto p = new Ponto(this.xInicial,this.yInicial);
@@ -78,20 +80,27 @@ public class Interface extends javax.swing.JFrame {
             case 3 -> {
                 Piramide pi = new Piramide(this.xInicial, this.yInicial,this.xFinal,this.yFinal,corBorda.getBackground());
                 pi.paint(graficos,corBorda.getBackground());
+                this.posicoesX.clear();
+                this.posicoesY.clear();
             }
             case 4 -> {
                 Circulo c = new Circulo(xInicial,yInicial,xFinal,yFinal,corPreenchimento.getBackground());
                 c.paint(graficos,corBorda.getBackground());
                 c.preenche(graficos,corPreenchimento.getBackground());
+                this.posicoesX.clear();
+                this.posicoesY.clear();
             }
             case 5 -> {
                 Cilindro cl = new Cilindro(this.xInicial, this.yInicial,this.xFinal,this.yFinal,corBorda.getBackground());
                 cl.paint(graficos,corBorda.getBackground());
+                this.posicoesX.clear();
+                this.posicoesY.clear();
             }
             case 6 ->{
-                    Spray s = new Spray(this.xInicial, this.yInicial);
-                    s.paint(graficos, corBorda.getBackground());
-
+                Spray s = new Spray(this.xInicial, this.yInicial);
+                s.paint(graficos, corBorda.getBackground());
+                this.posicoesX.clear();
+                this.posicoesY.clear();
             }
         }
     }
@@ -323,18 +332,18 @@ public class Interface extends javax.swing.JFrame {
     private void pegarPosicaoPressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pegarPosicaoXpressed
         this.xInicial= evt.getX();
         this.yInicial= evt.getY();
-        System.out.println("X inicial interface " + evt.getX()  );
-        System.out.println("Y inicial interface " + evt.getY() );
+
         posicoesX.add(this.xInicial);
         posicoesY.add(this.yInicial);
     }//GEN-LAST:event_pegarPosicaoXpressed
 
     private void pegarPosicaoReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pegarPosicaoXreleased
         this.xFinal=evt.getX();
-        System.out.println("X final interface" + xFinal);
+
         this.yFinal= evt.getY();
-        System.out.println("Y final interface" + yFinal);
+
         this.executaDesenho();
+
         this.xInicial=0;
         this.xFinal=0;
         this.yInicial=0;

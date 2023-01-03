@@ -27,21 +27,19 @@ public class Circulo extends D2{
     @Override
     public void paint(Graphics g,Color c){
         g.setColor(c);
-        System.out.println(super.largura());
         g.drawOval(super.xInicial,super.yInicial, super.largura(),super.altura());
     }
     
     public void preenche(Graphics g,Color c){
         g.setColor(c);
         g.fillOval(super.xInicial,super.yInicial, super.largura(), super.altura());
+        this.area();
     }
     
-    public int diametro(int xFinal, int xInicial){
-        return super.xFinal - super.xInicial;
+    public void area(){
+        double val;
+        val =( (super.altura()/2) * (super.largura()/2)) * 3.14 ;
+        System.out.println("Area do circulo: "+val);
     }
-    
-    public int raio(int xFinal, int xInicial){
-        int raio = diametro(super.xFinal, super.xInicial)/2;
-        return raio;
-    }
+
 }

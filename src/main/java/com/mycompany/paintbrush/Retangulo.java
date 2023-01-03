@@ -27,10 +27,6 @@ public class Retangulo extends D2{
 
         @Override
         public void paint(Graphics g, Color c){
-            System.out.println("x ini classe"+super.xInicial);
-            System.out.println("y ini classe"+super.yInicial);
-            System.out.println("altura classe"+super.altura());
-            System.out.println("largura classe"+super.largura());
             g.setColor(c);
             g.drawRect(super.xInicial,super.yInicial, super.largura() , super.altura());
         }
@@ -38,6 +34,11 @@ public class Retangulo extends D2{
     public void preenche(Graphics g,Color c){
         g.setColor(c);
         g.fillRect(super.xInicial+1,super.yInicial+1, super.largura()-1 , super.altura()-1);
+        this.area();
+    }
+
+    public void area(){
+        System.out.println("Area do retângulo "+ (super.altura()*largura()));
     }
     
 }

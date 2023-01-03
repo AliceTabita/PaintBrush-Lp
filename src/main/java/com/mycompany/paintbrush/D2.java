@@ -44,9 +44,6 @@ public abstract class D2 extends Ponto{
         return this.xFinal-super.xInicial;
     }
 
-    public int area(){
-        return altura() * largura();
-    }
 
     public abstract void paint(Graphics g, Color c);
 }

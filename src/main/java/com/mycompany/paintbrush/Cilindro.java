@@ -33,7 +33,11 @@ public class Cilindro extends D2{
         graficos.drawOval(super.xInicial, super.yInicial + altura,(raio*2), raio);
         graficos.drawLine(super.xInicial, super.yInicial+(raio/2), super.xInicial, super.yInicial + altura + raio/2);
         graficos.drawLine(super.xFinal, super.yInicial+(raio/2), super.xFinal, super.yInicial + altura + raio/2);
-        
+        this.volume(raio);
+    }
+    public void volume(int raio){
+        int a=super.altura();
+        System.out.println("Volume do cilindro: "+(raio*raio*a*3.14) +" m3");
     }
 
 }
